@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import SpecialDay from "./components/SpecialDay";
+import Locked from "./components/Locked";
+import dayConfig from "./config/dayConfig";
+import { getUnlockedDays } from "./utils/date";
+import "./index.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const unlockedTill = getUnlockedDays();
+
+  const unlockedDays = dayConfig
+    .filter(d => d.day <= unlockedTill)
+    .map(d => d.day);
+
+  if (unlockedDays.length === 0) {
+    return <Locked />;
+  }
+
+  return <SpecialDay unlockedDays={unlockedDays} />;
 }
 
 export default App;

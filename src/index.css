@@ -1,13 +1,213 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ================= BASE PAGE ================= */
+.page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Georgia", serif;
+  position: relative;
+  overflow: hidden;
+  transition: background 1s ease;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* ================= BACKGROUND COLORS ================= */
+.bg-rose {
+  background: linear-gradient(180deg, #ff4d6d, #ff758f);
+}
+
+.bg-propose {
+  background: linear-gradient(180deg, #7f7fd5, #f54227);
+}
+
+.bg-chocolate {
+  background: linear-gradient(180deg, #4b2c20, #8b5e3c);
+}
+
+.bg-teddy {
+  background: linear-gradient(180deg, #f5275e, #9827f5);
+}
+
+.bg-promise {
+  background: linear-gradient(180deg, #8360c3, #2ebf91);
+}
+
+.bg-hug {
+  background: linear-gradient(180deg, #ff9966, #ff5e62);
+}
+
+.bg-kiss {
+  background: linear-gradient(180deg, #27E0F5, #240b36);
+}
+
+.bg-valentine {
+  background: linear-gradient(180deg, #f50f87, #f5730f);
+}
+
+/* ================= CARD ================= */
+.canva-card {
+  width: 88%;
+  max-width: 340px;
+  padding: 28px 22px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  text-align: center;
+  z-index: 3;
+}
+
+.title {
+  font-size: 26px;
+}
+
+.dear {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.main-text {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.highlight-box {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 14px;
+  padding: 14px;
+  font-style: italic;
+  margin-bottom: 16px;
+}
+
+.signature {
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.countdown {
+  font-size: 12px;
+}
+
+.swipe-hint {
+  font-size: 11px;
+  opacity: 0.8;
+  margin-top: 10px;
+}
+
+/* ================= DAY ICON ================= */
+.day-icon {
+  font-size: 42px;
+  margin-bottom: 10px;
+  animation: pulse 2s infinite;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
+}
+
+/* ================= BACKGROUND HEARTS (BOTTOM → UP) ================= */
+.bg-hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bg-hearts span {
+  position: absolute;
+  bottom: -40px;
+  left: calc(100% * var(--pos));
+  font-size: 20px;
+  opacity: 0.6;
+  animation: heartUp calc(6s + 4s * var(--time)) linear infinite;
+  animation-delay: calc(-5s * var(--delay));
+}
+
+@keyframes heartUp {
+  from {
+    transform: translateY(0) scale(0.6);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateY(-120vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* ================= ROSES FALLING (TOP → DOWN) ================= */
+.bg-roses {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.bg-roses span {
+  position: absolute;
+  top: -60px;
+  left: calc(100% * var(--pos));
+  font-size: 26px;
+  opacity: 0.85;
+  animation: roseFall calc(7s + 4s * var(--time)) linear infinite;
+  animation-delay: calc(-5s * var(--delay));
+}
+
+@keyframes roseFall {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(120vh) rotate(360deg);
+  }
+}
+
+/* ================= CLICK EFFECT ================= */
+.click-effect {
+  position: fixed;
+  pointer-events: none;
+  animation: clickBurst 1.6s ease-out forwards;
+  z-index: 999;
+}
+
+@keyframes clickBurst {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120px) scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+}
+
+.fade-in {
+  animation: fade 0.8s ease;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
