@@ -23,7 +23,7 @@ const dayConfig = [
     music: "/music/propose.mp3",
     clickSound: "/sounds/pageli.mp3",
     message:
-      "My heart choose you long before I ever said the words. Today, I promise my love forever.",
+      "“You are not just my love, you are my lifeline. Every heartbeat of mine whispers your name. Will you hold my hand forever?",
     quote: "In every lifetime, I choose you."
   },
   {
