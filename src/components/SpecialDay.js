@@ -43,53 +43,53 @@ const SpecialDay = ({ unlockedDays }) => {
     }
   };
 
- /* ---------- CLICK EFFECT + AUDIO DUCKING ---------- */
-const handleClick = (e) => {
-  // Start background music on first interaction
-  if (!musicStarted) setMusicStarted(true);
+  /* ---------- CLICK EFFECT + AUDIO DUCKING ---------- */
+  const handleClick = (e) => {
+    // Start background music on first interaction
+    if (!musicStarted) setMusicStarted(true);
 
-  /* 🔉 LOWER BACKGROUND MUSIC */
-  if (audioRef.current) {
-    audioRef.current.volume = 0.2; // reduce volume
-  }
-
-  /* 🎤 PLAY VOICE */
-  if (data?.clickSound) {
-    if (clickAudioRef.current) {
-      clickAudioRef.current.pause();
-      clickAudioRef.current.currentTime = 0;
+    /* 🔉 LOWER BACKGROUND MUSIC */
+    if (audioRef.current) {
+      audioRef.current.volume = 0.2; // reduce volume
     }
 
-    clickAudioRef.current = new Audio(data.clickSound);
-    clickAudioRef.current.volume = 1;
-    clickAudioRef.current.play().catch(() => {});
-
-    // 🔊 Restore background music after voice ends
-    clickAudioRef.current.onended = () => {
-      if (audioRef.current) {
-        audioRef.current.volume = 0.6; // back to normal
+    /* 🎤 PLAY VOICE */
+    if (data?.clickSound) {
+      if (clickAudioRef.current) {
+        clickAudioRef.current.pause();
+        clickAudioRef.current.currentTime = 0;
       }
-    };
-  }
 
-  /* 🌹 EMOJI BURST AT CLICK POSITION */
-  const x = e.clientX;
-  const y = e.clientY;
+      clickAudioRef.current = new Audio(data.clickSound);
+      clickAudioRef.current.volume = 1;
+      clickAudioRef.current.play().catch(() => {});
 
-  const burst = Array.from({ length: 10 }).map(() => ({
-    id: Math.random(),
-    x,
-    y,
-    size: 18 + Math.random() * 26,
-    offsetX: (Math.random() - 0.5) * 120
-  }));
+      // 🔊 Restore background music after voice ends
+      clickAudioRef.current.onended = () => {
+        if (audioRef.current) {
+          audioRef.current.volume = 0.6; // back to normal
+        }
+      };
+    }
 
-  setEffects(prev => [...prev, ...burst]);
+    /* 🌹 EMOJI BURST AT CLICK POSITION */
+    const x = e.clientX;
+    const y = e.clientY;
 
-  setTimeout(() => {
-    setEffects(prev => prev.slice(burst.length));
-  }, 1600);
-};
+    const burst = Array.from({ length: 10 }).map(() => ({
+      id: Math.random(),
+      x,
+      y,
+      size: 18 + Math.random() * 26,
+      offsetX: (Math.random() - 0.5) * 120
+    }));
+
+    setEffects(prev => [...prev, ...burst]);
+
+    setTimeout(() => {
+      setEffects(prev => prev.slice(burst.length));
+    }, 1600);
+  };
 
   /* ---------- SAFE RETURN ---------- */
   if (!data) return null;
@@ -133,6 +133,45 @@ const handleClick = (e) => {
           </span>
         ))}
       </div>
+
+      {/* ✨ SPARKLES for romantic days (10-14) */}
+      {data.day >= 10 && (
+        <div className="sparkle-container">
+          {[...Array(25)].map((_, i) => (
+            <span
+              key={i}
+              className="sparkle"
+              style={{
+                "--sparkle-pos-x": Math.random(),
+                "--sparkle-pos-y": Math.random(),
+                "--sparkle-time": Math.random(),
+                "--sparkle-delay": Math.random()
+              }}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* 🎊 CONFETTI for Valentine's Day (day 14) */}
+      {data.day === 14 && (
+        <div className="confetti-container">
+          {[...Array(50)].map((_, i) => {
+            const colors = ["#ff0844", "#ff6b9d", "#ffa8c5", "#ffeb3b", "#fff"];
+            return (
+              <span
+                key={i}
+                className="confetti"
+                style={{
+                  "--confetti-color": colors[Math.floor(Math.random() * colors.length)],
+                  "--confetti-pos": Math.random(),
+                  "--confetti-time": Math.random(),
+                  "--confetti-delay": Math.random()
+                }}
+              />
+            );
+          })}
+        </div>
+      )}
 
       {/* Click burst */}
       {effects.map(e => (

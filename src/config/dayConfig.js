@@ -23,7 +23,7 @@ const dayConfig = [
     music: "/music/propose.mp3",
     clickSound: "/sounds/pageli.mp3",
     message:
-      "“You are not just my love, you are my lifeline. Every heartbeat of mine whispers your name. Will you hold my hand forever?",
+      "You are not just my love, you are my lifeline. Every heartbeat of mine whispers your name. Will you hold my hand forever?",
     quote: "In every lifetime, I choose you."
   },
   {
@@ -49,8 +49,8 @@ const dayConfig = [
     music: "/music/teddy.mp3",
     clickSound: "/sounds/pageli.mp3",
     message:
-      "If I could, I would give you a hug that lasts forever.",
-    quote: "You are my comfort place."
+      "You're my comfort, my warmth, my safe place. In your arms, I've found my forever home. Every hug from you feels like coming home to the coziest place in the world.",
+    quote: "You are my favorite cuddle, my sweetest comfort, my forever teddy bear. 🧸💕"
   },
   {
     day: 11,
@@ -62,8 +62,8 @@ const dayConfig = [
     music: "/music/promise.mp3",
     clickSound: "/sounds/pageli.mp3",
     message:
-      "I promise to stand by you, love you, and choose you every single day.",
-    quote: "My heart is my promise to you."
+      "I promise to love you in every sunrise and every sunset. I promise to hold your hand through storms and sunshine. I promise to be your reason to smile, today and always. You're not just my promise—you're my destiny.",
+    quote: "My promises to you are written in the stars, sealed with my heart. Forever yours. 💫💍"
   },
   {
     day: 12,
@@ -75,8 +75,8 @@ const dayConfig = [
     music: "/music/hug.mp3",
     clickSound: "/sounds/pageli.mp3",
     message:
-      "Every hug of yours feels like home.",
-    quote: "Wrapped in your arms is where I belong."
+      "In your embrace, the world fades away and only love remains. Your hugs are my sanctuary, my peace, my everything. When you hold me, I feel infinite.",
+    quote: "Wrapped in your arms is where I belong, where I breathe, where I'm truly alive. 🤗💖"
   },
   {
     day: 13,
@@ -88,21 +88,21 @@ const dayConfig = [
     music: "/music/kiss.mp3",
     clickSound: "/sounds/pageli.mp3",
     message:
-      "A kiss from you is my favorite feeling in the world.",
-    quote: "One kiss, endless love."
+      "Every kiss from you is a promise, a dream, a forever. Your lips tell stories my heart already knows. When our souls touch through a kiss, time stands still and eternity begins.",
+    quote: "One kiss from you and the universe makes sense. You are my favorite addiction. 💋✨"
   },
   {
     day: 14,
     icon: "❤️",
     effectIcon: "❤️",
-    title: "Happy Valentine’s Day",
+    title: "Happy Valentine's Day",
     bgClass: "bg-valentine",
     heartColor: "#ff1744",
     music: "/music/valentine.mp3",
     clickSound: "/sounds/pageli.mp3",
     message:
-      "Out of everyone in this world, my heart chose you.",
-    quote: "Forever my Valentine ❤️"
+      "Today and every day, you are my greatest love story. You are the reason my heart beats, the reason I believe in magic. Out of billions of souls, mine chose yours—and I'd choose you in every universe, in every lifetime, in every moment. You are my forever Valentine, my soulmate, my everything.",
+    quote: "Forever isn't long enough when I'm with you. You are my always. ❤️👫💫"
   }
 ];
 
