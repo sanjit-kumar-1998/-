@@ -211,34 +211,33 @@ const RomanticAnimation = ({ onClose, audioRef }) => {
   const nextMessageTimeRef = useRef(0);
 
   useEffect(() => {
-    // Pause the main background music when animation opens
-    if (audioRef && audioRef.current) {
-      audioRef.current.pause();
+  const mainAudio = audioRef?.current; // ✅ store ref value
+
+  if (mainAudio) {
+    mainAudio.pause();
+  }
+
+  animationAudioRef.current = new Audio("/music/valentine.mp3");
+  animationAudioRef.current.loop = true;
+  animationAudioRef.current.volume = 0.5;
+  animationAudioRef.current.play().catch(() => {});
+
+  setCurrentMessage(1);
+  nextMessageTimeRef.current = Date.now() + 10000;
+
+  return () => {
+    if (animationAudioRef.current) {
+      animationAudioRef.current.pause();
     }
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+    if (mainAudio) {
+      mainAudio.play().catch(() => {});
+    }
+  };
+}, [audioRef]);
 
-    // Start animation background music
-    animationAudioRef.current = new Audio("/music/valentine.mp3"); // You can use any romantic music file
-    animationAudioRef.current.loop = true;
-    animationAudioRef.current.volume = 0.5;
-    animationAudioRef.current.play().catch(() => {});
-
-    // Show first message immediately
-    setCurrentMessage(1);
-    nextMessageTimeRef.current = Date.now() + 10000; // 10 seconds
-
-    return () => {
-      if (animationAudioRef.current) {
-        animationAudioRef.current.pause();
-      }
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-      }
-      // Resume main music when animation closes
-      if (audioRef && audioRef.current) {
-        audioRef.current.play().catch(() => {});
-      }
-    };
-  }, [audioRef]);
 
   // Timer to advance messages
   useEffect(() => {

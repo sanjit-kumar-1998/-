@@ -8,7 +8,7 @@ const PasswordModal = ({ onUnlock }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   // 💝 Password: "Mopagelitapa"
-  const correctAnswer = "motichorladdu"; // Stored in lowercase for comparison
+  const correctAnswer = "Mopagelitapa"; // Stored in lowercase for comparison
 
   const handleSubmit = (e) => {
     e.preventDefault();

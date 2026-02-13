@@ -389,7 +389,7 @@
 
 .firework-heart {
   position: absolute;
-  font-size: 36px;
+  font-size: 20px;
   animation: fireworkExplode 1s ease-out forwards;
   animation-delay: var(--firework-delay);
   filter: drop-shadow(0 0 15px rgba(255, 0, 68, 0.9));
