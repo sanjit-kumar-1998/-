@@ -378,6 +378,40 @@
   margin-top: 10px;
 }
 
+/* ================= PAGELI BUTTON (VALENTINE'S DAY) ================= */
+.pageli-button {
+  background: linear-gradient(135deg, #ff0844, #ff6b9d);
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 25px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 20px 0 10px 0;
+  box-shadow: 0 6px 20px rgba(255, 8, 68, 0.4);
+  transition: all 0.3s ease;
+  animation: buttonPulse 2s ease-in-out infinite;
+}
+
+.pageli-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 8, 68, 0.6);
+}
+
+.pageli-button:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+@keyframes buttonPulse {
+  0%, 100% { 
+    box-shadow: 0 6px 20px rgba(255, 8, 68, 0.4);
+  }
+  50% { 
+    box-shadow: 0 6px 30px rgba(255, 8, 68, 0.7);
+  }
+}
+
 /* ================= DAY ICON ================= */
 .day-icon {
   font-size: 42px;

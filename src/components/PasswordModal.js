@@ -7,31 +7,36 @@ const PasswordModal = ({ onUnlock }) => {
   const [attempts, setAttempts] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
 
-  // 💝 You can customize these - choose what's special to both of you!
-  const correctAnswers = [
-    "pageli",      // Your nickname for her
-    "pagli",       // Alternative spelling
-    "forever",     // Romantic answer
-  ];
+  // 💝 Password: "Mopagelitapa"
+  const correctAnswer = "motichorladdu"; // Stored in lowercase for comparison
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
     const userAnswer = password.toLowerCase().trim();
     
-    if (correctAnswers.includes(userAnswer)) {
+    if (userAnswer === correctAnswer) {
       // Correct password! 🎉
       onUnlock();
     } else {
-      setAttempts(attempts + 1);
+      const newAttempts = attempts + 1;
+      setAttempts(newAttempts);
       setPassword("");
       
-      if (attempts === 0) {
+      // Auto-unlock after 5 attempts
+      if (newAttempts >= 5) {
+        setTimeout(() => {
+          onUnlock();
+        }, 2000); // Wait 2 seconds before unlocking
+        setError("Okay my love, let me unlock it for you... 💕");
+      } else if (newAttempts === 1) {
         setError("Not quite... try again my love ❤️");
-      } else if (attempts === 1) {
-        setError("Think about what I always call you 💕");
-      } else {
-        setError("Hint: It's my favorite nickname for you! 😊");
+      } else if (newAttempts === 2) {
+        setError("Think about what we both love to eat on our birthdays! 🎂");
+      } else if (newAttempts === 3) {
+        setError("Hint: It's a sweet Indian dessert we share together! 🍬");
+      } else if (newAttempts === 4) {
+        setError("Last try! Think: Round, orange, sweet... our favorite! 🧡");
       }
     }
   };
@@ -44,7 +49,7 @@ const PasswordModal = ({ onUnlock }) => {
         <div className="password-question">
           Before we celebrate together, answer this:
           <br /><br />
-          <strong>What do I call you when I want to make you smile?</strong>
+          <strong>What's our favorite sweet that we love to eat on our birthdays? 🎂</strong>
         </div>
         
         <form onSubmit={handleSubmit}>

@@ -1,10 +1,12 @@
 import { useState, useRef, useEffect } from "react";
 import dayConfig from "../config/dayConfig";
+import RomanticAnimation from "./RomanticAnimation";
 
 const SpecialDay = ({ unlockedDays }) => {
   const [index, setIndex] = useState(unlockedDays.length - 1);
   const [effects, setEffects] = useState([]);
   const [musicStarted, setMusicStarted] = useState(false);
+  const [showAnimation, setShowAnimation] = useState(false);
   const audioRef = useRef(null);
   const clickAudioRef = useRef(null);
 
@@ -95,13 +97,16 @@ const SpecialDay = ({ unlockedDays }) => {
   if (!data) return null;
 
   return (
-    <div
-      className={`page ${data.bgClass}`}
-      onClick={handleClick}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      style={{ "--heart-color": data.heartColor }}
-    >
+    <>
+      {showAnimation && <RomanticAnimation onClose={() => setShowAnimation(false)} audioRef={audioRef} />}
+      
+      <div
+        className={`page ${data.bgClass}`}
+        onClick={handleClick}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        style={{ "--heart-color": data.heartColor }}
+      >
       {/* Floating hearts bottom */}
       <div className="bg-hearts">
         {[...Array(18)].map((_, i) => (
@@ -205,6 +210,19 @@ const SpecialDay = ({ unlockedDays }) => {
           <span>— Yours Forever ❤️</span>
         </p>
 
+        {/* Special button for Valentine's Day */}
+        {data.showButton && (
+          <button 
+            className="pageli-button"
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent card click
+              setShowAnimation(true);
+            }}
+          >
+            💕 Pageli 💕
+          </button>
+        )}
+
         <div className="countdown">
           Day {data.day} of Valentine Week
         </div>
@@ -214,6 +232,7 @@ const SpecialDay = ({ unlockedDays }) => {
         </p>
       </div>
     </div>
+    </>
   );
 };
 

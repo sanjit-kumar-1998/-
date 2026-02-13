@@ -100,6 +100,7 @@ const dayConfig = [
     heartColor: "#ff1744",
     music: "/music/valentine.mp3",
     clickSound: "/sounds/pageli.mp3",
+    showButton: true, // Show special button on Valentine's Day
     message:
       "Today and every day, you are my greatest love story. You are the reason my heart beats, the reason I believe in magic. Out of billions of souls, mine chose yours—and I'd choose you in every universe, in every lifetime, in every moment. You are my forever Valentine, my soulmate, my everything.",
     quote: "Forever isn't long enough when I'm with you. You are my always. ❤️👫💫"
