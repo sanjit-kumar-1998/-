@@ -8,7 +8,7 @@ const PasswordModal = ({ onUnlock }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   // 💝 Password: "Mopagelitapa"
-  const correctAnswer = "Mopagelitapa"; // Stored in lowercase for comparison
+  const correctAnswer = "mopagelitapa"; // Stored in lowercase for comparison
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,11 +32,11 @@ const PasswordModal = ({ onUnlock }) => {
       } else if (newAttempts === 1) {
         setError("Not quite... try again my love ❤️");
       } else if (newAttempts === 2) {
-        setError("Think about what we both love to eat on our birthdays! 🎂");
+        setError("Think about what I call you when you're angry or sad... 🥺");
       } else if (newAttempts === 3) {
-        setError("Hint: It's a sweet Indian dessert we share together! 🍬");
+        setError("Hint: That special name that instantly makes you smile! 😊");
       } else if (newAttempts === 4) {
-        setError("Last try! Think: Round, orange, sweet... our favorite! 🧡");
+        setError("Last try! The name that turns your anger into happiness! 💕");
       }
     }
   };
@@ -49,7 +49,7 @@ const PasswordModal = ({ onUnlock }) => {
         <div className="password-question">
           Before we celebrate together, answer this:
           <br /><br />
-          <strong>What's our favorite sweet that we love to eat on our birthdays? 🎂</strong>
+          <strong>What do I call you when you're angry or sad that makes you happy? 🥰</strong>
         </div>
         
         <form onSubmit={handleSubmit}>

@@ -217,7 +217,7 @@ const RomanticAnimation = ({ onClose, audioRef }) => {
     mainAudio.pause();
   }
 
-  animationAudioRef.current = new Audio("/music/valentine.mp3");
+  animationAudioRef.current = new Audio("/music/Khali_tu_thibu.mp3");
   animationAudioRef.current.loop = true;
   animationAudioRef.current.volume = 0.5;
   animationAudioRef.current.play().catch(() => {});
